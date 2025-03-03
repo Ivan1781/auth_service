@@ -1,10 +1,7 @@
 package de.music.auth.controllers;
 
-import de.music.auth.dto.RegistrationRequest;
 import de.music.auth.services.UserRegistrationService;
-import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

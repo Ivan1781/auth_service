@@ -3,6 +3,7 @@ package de.music.auth.config;
 import de.music.auth.services.UserMusDetailService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -25,17 +26,14 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-//                .formLogin(httpForm->{httpForm.loginPage("/login").permitAll();
-//                })
                 .authorizeHttpRequests(authorize -> authorize
-                                .requestMatchers("/api/auth/signup").permitAll()
+                                .requestMatchers(HttpMethod.POST, "/api/auth/signup").permitAll()
                                 .requestMatchers("/health").permitAll()
-//                        .requestMatchers("/login").permitAll()
+                                .requestMatchers("/login").permitAll()
                                 .anyRequest().authenticated()
-                );
-        http.httpBasic(x -> {
-        });
-        http.csrf(csrf -> csrf.disable());
+                )
+                .httpBasic(x -> {})
+                .csrf(csrf -> csrf.disable());
         return http.build();
     }
 
