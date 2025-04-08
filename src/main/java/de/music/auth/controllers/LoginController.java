@@ -12,7 +12,7 @@ public class LoginController {
         this.userService = userService;
     }
 
-    @PostMapping( value = "/health", consumes = "application/json")
+    @PostMapping( value = "/log", consumes = "application/json")
     public ResponseEntity<String> login() {
         return ResponseEntity.ok("User login successfully");
     }
